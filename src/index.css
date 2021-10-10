@@ -32,6 +32,19 @@ a{
  justify-content: space-between;
 }
 
+.nav2{
+  justify-content: flex-start;
+}
+
+.nav-div{
+  display: flex;
+}
+
+.nav-div button{
+  margin-left: 10px;
+  padding: 0 5px;
+}
+
 /* ------- Blog ------ */
 
 .blogs{
@@ -109,6 +122,14 @@ form label{
 .submit-btn{
   height: 25px;
 }
+
+/* ------ Register Form ----- */
+
+.anchor {
+  text-decoration: underline;
+  color:blue;
+}
+
 
 /* ------- Media Query ------ */
 
