@@ -7,7 +7,8 @@ import { withRouter } from 'react-router';
 class EditBlogForm extends Component {
     constructor(props){
         super(props)
-
+        
+        console.log("i did run");
         let id = this.props.match.params.id;
         let [blog] = this.props.blogs.filter(blog=> id == blog.id);
 
