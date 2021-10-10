@@ -70,6 +70,8 @@ export const getAllBlogs =()=>{
     //     }
     // }
 
+    // ------ edit already added items ------
+
     export const editBlog = (editedBlog) => {
         return (dispatch, getState, {getFirestore})=>{
             let db = getFirestore();
@@ -82,3 +84,49 @@ export const getAllBlogs =()=>{
             })
         }
     }
+
+    // ------- register new user ---------
+
+    export const registerUser = (email, password, replace) => {
+        return (dispatch, getState, {getFirebase}) => {
+            let firebase =  getFirebase();
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                console.log(userCredential);
+                replace("/home");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        }
+    }
+
+    
+
+    export const login = (email, password, replace) => {
+        return (dispatch, getState, {getFirebase}) => {
+            const firebase = getFirebase();
+            firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+               console.log(userCredential);
+               replace("/home");
+            })
+            .catch((error) => {
+                console.log(error.code, error.message);
+            });
+            }
+        }
+
+
+        export const logout = (replace) => {
+            return (dispatch, getState, {getFirebase}) => {
+                const firebase = getFirebase();
+                firebase.auth().signOut().then(() => {
+                    replace("/login");
+                    console.log("logged out successfully");
+                  }).catch((error) => {
+                    console.log(error.code,error.message);
+                  });
+        }}
+
+        
